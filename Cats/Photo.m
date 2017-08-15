@@ -10,13 +10,14 @@
 
 @implementation Photo
 
--(instancetype)initWithServer:(NSString *)server farm:(NSString *)farm ID:(NSString *)ID secret:(NSString *)secret {
+-(instancetype)initWithServer:(NSString *)server farm:(NSString *)farm ID:(NSString *)ID secret:(NSString *)secret title:(NSString *)title {
     
     if(self = [super init]) {
         self.server = server;
         self.farm = farm;
         self.ID = ID;
         self.secret = secret;
+        self.title = title;
     }
     return self;
 }

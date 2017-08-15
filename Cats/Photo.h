@@ -15,8 +15,9 @@
 @property NSString *ID;
 @property NSString *secret;
 @property NSURL *url;
+@property NSString *title;
 
-- (instancetype)initWithServer:(NSString *)server farm:(NSString*)farm ID:(NSString*)ID secret:(NSString*)secret;
+- (instancetype)initWithServer:(NSString *)server farm:(NSString*)farm ID:(NSString*)ID secret:(NSString*)secret title:(NSString*)title;
 
 - (void)createURL;
 

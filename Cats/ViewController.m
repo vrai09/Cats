@@ -8,8 +8,14 @@
 
 #import "ViewController.h"
 #import "Photo.h"
+#import "CatCollectionViewCell.h"
 
-@interface ViewController ()
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property NSMutableArray *catArray;
+@property UICollectionViewFlowLayout *flowLayout;
+
 
 @end
 
@@ -17,7 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.catArray = [[NSMutableArray alloc]init];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
     
     NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=add1918e3bb8002f831ffccbb9625188&tags=cat"];
     
@@ -39,23 +49,60 @@
                 NSArray *photoArray = [photosDict objectForKey:@"photo"];
                 for(NSDictionary *photoDict in photoArray) {
                 
-                    Photo *photo = [[Photo alloc]initWithServer:[photoDict objectForKey:@"server"] farm:[photoDict objectForKey:@"farm"] ID:[photoDict objectForKey:@"id"] secret:[photoDict objectForKey:@"secret"]];
+                    Photo *photo = [[Photo alloc]initWithServer:[photoDict objectForKey:@"server"] farm:[photoDict objectForKey:@"farm"] ID:[photoDict objectForKey:@"id"] secret:[photoDict objectForKey:@"secret"] title:[photoDict objectForKey:@"title"]];
                             [photo createURL];
-                
-                    //NSLog(@"%@", photo.url);
+                    [self.catArray addObject:photo];
                 }
-        
-        //NSLog(@"%@",jsonDict);
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+        [self.collectionView reloadData];
+            
+        });
     }];
         
     
     [downloadTask resume];
+    });
+    
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.catArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CatCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
+    
+    Photo *photo = self.catArray[indexPath.item];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:photo.url];
+        cell.image = [UIImage imageWithData:imageData];
+        cell.title = photo.title;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell setUpCell];
+        });
+    });
+    
+    return cell;
+    
+}
+
+- (void)setUpLayout {
+    
+    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    self.flowLayout.itemSize = CGSizeMake(100, 100);
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    self.flowLayout.minimumInteritemSpacing = 15;
+    self.flowLayout.minimumLineSpacing = 10;
+    self.flowLayout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 50);
 }
 
 
