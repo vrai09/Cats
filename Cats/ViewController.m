@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property NSMutableArray *catArray;
-@property UICollectionViewFlowLayout *flowLayout;
 
 
 @end
@@ -51,6 +50,7 @@
                 
                     Photo *photo = [[Photo alloc]initWithServer:[photoDict objectForKey:@"server"] farm:[photoDict objectForKey:@"farm"] ID:[photoDict objectForKey:@"id"] secret:[photoDict objectForKey:@"secret"] title:[photoDict objectForKey:@"title"]];
                             [photo createURL];
+                    
                     [self.catArray addObject:photo];
                 }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -94,16 +94,5 @@
     return cell;
     
 }
-
-- (void)setUpLayout {
-    
-    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    self.flowLayout.itemSize = CGSizeMake(100, 100);
-    self.flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.flowLayout.minimumInteritemSpacing = 15;
-    self.flowLayout.minimumLineSpacing = 10;
-    self.flowLayout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 50);
-}
-
 
 @end
