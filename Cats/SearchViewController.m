@@ -28,6 +28,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 
