@@ -7,18 +7,19 @@
 // server, farm, id, and secret
 
 #import <Foundation/Foundation.h>
+@import MapKit;
+@import CoreLocation;
+@interface Photo : NSObject <MKAnnotation>
 
-@interface Photo : NSObject
 
-@property NSString *server;
-@property NSString *farm;
+@property(nonatomic) CLLocationCoordinate2D coordinate;
 @property NSString *ID;
-@property NSString *secret;
 @property NSURL *url;
-@property NSString *title;
+@property (nonatomic, copy)NSString *title;
+@property NSURL *locationURL;
 
-- (instancetype)initWithServer:(NSString *)server farm:(NSString*)farm ID:(NSString*)ID secret:(NSString*)secret title:(NSString*)title;
 
-- (void)createURL;
+- (instancetype)initWithID:(NSString*)ID title:(NSString*)title url:(NSURL*)url;
+
 
 @end

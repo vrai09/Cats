@@ -16,6 +16,10 @@
 		592F009D1F42375700D1EE1D /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F009C1F42375700D1EE1D /* Photo.m */; };
 		592F00A01F4251DD00D1EE1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592F009E1F4251DD00D1EE1D /* Main.storyboard */; };
 		592F00A31F42541800D1EE1D /* CatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F00A21F42541800D1EE1D /* CatCollectionViewCell.m */; };
+		593C148A1F43B85500481F48 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 593C14891F43B85500481F48 /* DetailViewController.m */; };
+		593C148D1F43CB5300481F48 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593C148C1F43CB5300481F48 /* MapKit.framework */; };
+		593C148F1F43DC6800481F48 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593C148E1F43DC6800481F48 /* CoreLocation.framework */; };
+		593C14921F43E3D100481F48 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 593C14911F43E3D100481F48 /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,12 @@
 		592F009F1F4251DD00D1EE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../CoreData/CoreData/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		592F00A11F42541800D1EE1D /* CatCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatCollectionViewCell.h; sourceTree = "<group>"; };
 		592F00A21F42541800D1EE1D /* CatCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatCollectionViewCell.m; sourceTree = "<group>"; };
+		593C14881F43B85500481F48 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		593C14891F43B85500481F48 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		593C148C1F43CB5300481F48 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		593C148E1F43DC6800481F48 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		593C14901F43E3D100481F48 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		593C14911F43E3D100481F48 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593C148F1F43DC6800481F48 /* CoreLocation.framework in Frameworks */,
+				593C148D1F43CB5300481F48 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +84,7 @@
 				592F00751F42307200D1EE1D /* Cats */,
 				592F008F1F42307200D1EE1D /* CatsTests */,
 				592F00741F42307200D1EE1D /* Products */,
+				593C148B1F43CB5300481F48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,11 +104,15 @@
 				592F007A1F42307200D1EE1D /* AppDelegate.m */,
 				592F007C1F42307200D1EE1D /* ViewController.h */,
 				592F007D1F42307200D1EE1D /* ViewController.m */,
+				593C14901F43E3D100481F48 /* SearchViewController.h */,
+				593C14911F43E3D100481F48 /* SearchViewController.m */,
 				592F00A11F42541800D1EE1D /* CatCollectionViewCell.h */,
 				592F00A21F42541800D1EE1D /* CatCollectionViewCell.m */,
 				592F009B1F42375700D1EE1D /* Photo.h */,
 				592F009C1F42375700D1EE1D /* Photo.m */,
 				592F009E1F4251DD00D1EE1D /* Main.storyboard */,
+				593C14881F43B85500481F48 /* DetailViewController.h */,
+				593C14891F43B85500481F48 /* DetailViewController.m */,
 				592F00821F42307200D1EE1D /* Assets.xcassets */,
 				592F00841F42307200D1EE1D /* LaunchScreen.storyboard */,
 				592F00871F42307200D1EE1D /* Info.plist */,
@@ -119,6 +136,15 @@
 				592F00921F42307200D1EE1D /* Info.plist */,
 			);
 			path = CatsTests;
+			sourceTree = "<group>";
+		};
+		593C148B1F43CB5300481F48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				593C148E1F43DC6800481F48 /* CoreLocation.framework */,
+				593C148C1F43CB5300481F48 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +254,8 @@
 				592F007B1F42307200D1EE1D /* AppDelegate.m in Sources */,
 				592F00781F42307200D1EE1D /* main.m in Sources */,
 				592F00A31F42541800D1EE1D /* CatCollectionViewCell.m in Sources */,
+				593C148A1F43B85500481F48 /* DetailViewController.m in Sources */,
+				593C14921F43E3D100481F48 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +452,7 @@
 				592F00971F42307200D1EE1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		592F00981F42307200D1EE1D /* Build configuration list for PBXNativeTarget "CatsTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +461,7 @@
 				592F009A1F42307200D1EE1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

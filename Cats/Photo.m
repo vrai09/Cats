@@ -10,19 +10,15 @@
 
 @implementation Photo
 
--(instancetype)initWithServer:(NSString *)server farm:(NSString *)farm ID:(NSString *)ID secret:(NSString *)secret title:(NSString *)title {
+-(instancetype)initWithID:(NSString *)ID title:(NSString *)title url:(NSURL *)url
+{
     
     if(self = [super init]) {
-        self.server = server;
-        self.farm = farm;
         self.ID = ID;
-        self.secret = secret;
-        self.title = title;
+        _title = title;
+        self.url = url;
     }
     return self;
 }
 
-- (void)createURL {
-    self.url = [NSURL URLWithString:[NSString stringWithFormat:@"https://farm%d.staticflickr.com/%@/%@_%@.jpg", [self.farm intValue] , self.server, self.ID, self.secret]];
-}
 @end

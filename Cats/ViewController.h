@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
+@import MapKit;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <SearchDelegate>
 
 
 @end
